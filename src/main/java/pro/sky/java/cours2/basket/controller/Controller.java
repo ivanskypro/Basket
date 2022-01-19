@@ -5,29 +5,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.java.cours2.basket.model.Item;
-import pro.sky.java.cours2.basket.service.BasketService;
+import pro.sky.java.cours2.basket.service.CartService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping (path = "/store/order")
+@RequestMapping (path = "/order")
 public class Controller {
-    private final BasketService basketService;
+    private final CartService cartService;
 
-    public Controller(BasketService basketService) {
-        this.basketService = basketService;
+    public Controller(CartService cartService) {
+        this.cartService = cartService;
     }
 
     @GetMapping("/add")
-    public String addItem(@RequestParam int id) {
-        Item result = basketService.add(id);
-        return "товар с артикулом " + result + " успешно добавлен в корзину";
+    public String addItem(@RequestParam List <Integer> id) {
+        List<Integer> result = id;
+        cartService.add(id);
+        return "Товар Item{" +
+                "itemId=" + result +
+                '}'+ " успешно добавлен в корзину";
     }
 
     @GetMapping ("/get")
     public List<Item> getAllItems (){
-        List<Item> result = basketService.get();
+        List<Item> result = cartService.get();
         return result;
     }
-
 }

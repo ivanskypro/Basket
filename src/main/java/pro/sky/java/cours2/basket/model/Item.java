@@ -1,20 +1,19 @@
 package pro.sky.java.cours2.basket.model;
-
 import java.util.Objects;
 
 public class Item {
 
-    private int itemId;
+    private Integer itemId;
 
-    public Item(int itemId) {
+    public Item(Integer itemId) {
         this.itemId = itemId;
     }
 
-    public int getItemId() {
+    public Integer getItemId() {
         return itemId;
     }
 
-    public void setItemId(int itemId) {
+    public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
 
