@@ -29,7 +29,6 @@ public class Controller {
 
     @GetMapping ("/get")
     public List<Item> getAllItems (){
-        List<Item> result = cartService.get();
-        return result;
+        return cartService.get();
     }
 }
